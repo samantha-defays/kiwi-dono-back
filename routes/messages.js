@@ -34,15 +34,12 @@ router.put('/:id', (req, res) => {
         return res.status(404).json({ error: 'Message non trouvé' });
     }
 
-    // Mettre à jour le message
     messages[messageIndex].text = req.body.text;
     res.status(200).json(messages[messageIndex]);
 });
 
 // DELETE
 router.delete('/:id', (req, res) => {
-    console.log(req);
-    
     const messageIndex = messages.findIndex(m => m.id === parseInt(req.params.id));
     if (messageIndex === -1) {
         return res.status(404).json({ error: 'Message non trouvé' });
