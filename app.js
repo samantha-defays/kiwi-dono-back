@@ -7,13 +7,11 @@ app.use(express.json());
 
 app.use(cors());
 
-// Middleware de journalisation pour afficher toutes les requêtes
 app.use((req, res, next) => {
     console.log(`Requête reçue : ${req.method} ${req.url}`);
     next();
 });
 
-// Route de test
 app.get('/api/messages', (req, res) => {
     res.json([
         { id: 1, text: 'Message 1' },
@@ -24,7 +22,6 @@ app.get('/api/messages', (req, res) => {
 import messageRoutes from './routes/messages.js';
 app.use('/messages', messageRoutes);
 
-// Gestion des erreurs 404
 app.use((req, res, next) => {
     res.status(404).send('Route non trouvée');
 });
