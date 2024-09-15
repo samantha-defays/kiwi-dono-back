@@ -1,17 +1,24 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-// Middleware pour analyser le JSON
 app.use(express.json());
 
-// Active les CORS pour les appels du front
 app.use(cors());
 
 // Middleware de journalisation pour afficher toutes les requêtes
 app.use((req, res, next) => {
     console.log(`Requête reçue : ${req.method} ${req.url}`);
     next();
+});
+
+// Route de test
+app.get('/api/messages', (req, res) => {
+    res.json([
+        { id: 1, text: 'Message 1' },
+        { id: 2, text: 'Message 2' }
+    ]);
 });
 
 const messageRoutes = require('./routes/messages');
@@ -22,8 +29,4 @@ app.use((req, res, next) => {
     res.status(404).send('Route non trouvée');
 });
 
-// Démarrer le serveur sur le port 3000
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Le serveur écoute sur le port ${port}`);
-});
+module.exports = app;
