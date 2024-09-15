@@ -1,5 +1,5 @@
-const express = require('express');
-const cors = require('cors');
+import express from 'express';
+import cors from 'cors'; 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -21,7 +21,7 @@ app.get('/api/messages', (req, res) => {
     ]);
 });
 
-const messageRoutes = require('./routes/messages');
+import messageRoutes from './routes/messages.js';
 app.use('/messages', messageRoutes);
 
 // Gestion des erreurs 404
@@ -29,4 +29,4 @@ app.use((req, res, next) => {
     res.status(404).send('Route non trouvée');
 });
 
-module.exports = app;
+export default app;

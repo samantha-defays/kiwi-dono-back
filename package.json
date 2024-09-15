@@ -3,18 +3,19 @@
   "version": "1.0.0",
   "description": "Une application backend utilisant Express",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "start": "node app.js",
     "test": "NODE_ENV=test mocha"
   },
   "dependencies": {
-    "body-parser": "^1.20.3",
-    "chai": "^5.1.1",
     "cors": "^2.8.5",
-    "express": "^4.21.0",
-    "mocha": "^10.7.3"
+    "express": "^4.21.0"
   },
   "devDependencies": {
-    "supertest": "^7.0.0"
+    "supertest": "^7.0.0",
+    "mocha": "^10.7.3",
+    "body-parser": "^1.20.3",
+    "chai": "^5.1.1"
   }
 }
